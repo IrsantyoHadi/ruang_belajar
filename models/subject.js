@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   Subject.init({
     name: DataTypes.STRING,
     description : DataTypes.STRING,
-    difficultyLevel: DataTypes.INTEGER
+    diffilcutyLevel: DataTypes.INTEGER
   },{ sequelize })
 
   return Subject;

@@ -1,4 +1,5 @@
 'use strict';
+const sentMail = require('../helpers/sentMail')
 module.exports = (sequelize, DataTypes) => {
   class Student extends sequelize.Sequelize.Model {
     static associate(models){
@@ -63,10 +64,15 @@ module.exports = (sequelize, DataTypes) => {
   },{ 
     hooks :{
       beforeSave : (input) =>{
-        const bcrypt = require('bcryptjs');
-        const salt = bcrypt.genSaltSync(10);
-        const hash = bcrypt.hashSync(input.password, salt)
-        input.password = hash
+        if(input.password.length<20){
+          const bcrypt = require('bcryptjs');
+          const salt = bcrypt.genSaltSync(10);
+          const hash = bcrypt.hashSync(input.password, salt)
+          input.password = hash
+        }
+      },
+      afterCreate:(input)=>{
+        return sentMail(input)
       }
     },
     sequelize })

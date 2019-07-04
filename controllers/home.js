@@ -15,6 +15,18 @@ class HomeController {
       msg : req.flash('login')
     })
   }
+
+  static verifikasi(req,res){
+    Model.Student.findByPk(req.params.studentId)
+    .then(dataStudent=>{
+      dataStudent.update({isRegister : true})
+      req.flash('login',`Selamat Datang di Ruang Belajar ${dataStudent.first_name} silahkan login untuk mulai belajar`)
+      res.redirect('/login')
+    })
+    .catch(err=>{
+      res.send(err)
+    })
+  }
   
 }
 

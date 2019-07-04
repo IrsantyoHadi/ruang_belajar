@@ -3,7 +3,7 @@ const Router = express.Router()
 const Student = require('../controllers/student')
 const validasiLogin = require('../middleware/validasiLogin')
 
-Router.get("/")
+Router.get("/",Student.getAll)
 Router.post("/register",Student.postRegisterStudent)
 Router.post("/login",Student.postLogin)
 Router.get("/dashboard/:studentId",validasiLogin,Student.getDashBoard)

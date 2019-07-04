@@ -46,7 +46,7 @@ class StudentController {
               // console.log(req.session.Student)
               res.redirect(`/students/dashboard/${dataStudent.id}`)
             }else{
-              throw new Error(`Silahkan registrasi email terlebih dahulu`)
+              throw new Error(`Silahkan verifikasi email terlebih dahulu`)
             }
           }else{
             throw new Error(`Password Salah`)
@@ -134,6 +134,23 @@ class StudentController {
       req.flash('edit','salah konfirmasi password')
       res.redirect(`/students/edit_profile/${req.params.studentId}`)
     }
+  }
+
+  static getAll(req,res){
+    Model.Student.findAll({
+      include : [Model.Subject],
+      order : [['id','ASC']]
+    })
+    .then(dataStudents=>{
+      // res.send(dataStudents)
+      res.render('all_students.ejs',{
+        title: 'Students',
+        dataStudents
+      })
+    })
+    .catch(err=>{
+      res.send(err)
+    })
   }
 }
 

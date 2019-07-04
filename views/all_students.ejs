@@ -1,8 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include("../partials/header.ejs")%>
+  <%- include("../partials/navbar.ejs")%>
 <body>
-  
+  <div class="container">        
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+          <th>Subject</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%dataStudents.forEach(el=>{%>
+          <tr>
+            <td><%=el.first_name%></td>
+            <td><%=el.last_name%></td>
+            <td><%=el.email%></td>
+            <td>
+              <ol>
+              <%el.Subjects.forEach(ele=>{%>
+                  <li><%=ele.name%></li>
+                  <%})%>
+                </ol>
+            </td>
+        <%})%>
+    </table>
+  </div>
 </body>
 </html>
 
