@@ -1,0 +1,23 @@
+{
+  "name": "pair_project2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "cookie": "^0.4.0",
+    "cookie-parser": "^1.4.4",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "parser": "^0.1.4",
+    "pg": "^7.11.0",
+    "sequelize": "^5.9.2"
+  }
+}

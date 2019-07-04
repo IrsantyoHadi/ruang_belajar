@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("../partials/header.ejs")%>
+    <%- include("../partials/navbar.ejs")%>
+<body>
+    <h1><%=msg%></h1>
+    <div class="container">
+      <div class="row">
+        <form class="form-horizontal" action='/students/register' method="POST">
+          <fieldset>
+            <div id="legend">
+              <legend class="">Register New Student</legend>
+            </div>
+            <div class="control-group">
+              <!-- Username -->
+              <label class="control-label"  for="username">Username</label>
+              <div class="controls">
+                <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+                <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+              </div>
+            </div>
+            <div class="control-group">
+                <!-- First Name -->
+                <label class="control-label"  for="firstname">First Name</label>
+                <div class="controls">
+                  <input type="text" id="firstname" name="first_name" placeholder="" class="input-xlarge">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Last Name -->
+                <label class="control-label"  for="lastname">Last Name</label>
+                <div class="controls">
+                  <input type="text" id="lastname" name="last_name" placeholder="" class="input-xlarge">
+                </div>
+            </div>
+            <div class="control-group">
+              <!-- E-mail -->
+              <label class="control-label" for="email">E-mail</label>
+              <div class="controls">
+                <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
+                <p class="help-block">Please provide your E-mail</p>
+              </div>
+            </div>
+            <div class="control-group">
+                <!-- Age -->
+                <label class="control-label" for="age">Age</label>
+                <div class="controls">
+                  <input type="number" id="age" name="age" placeholder="" class="input-xlarge">
+                </div>
+            </div>
+            <div class="control-group">
+              <!-- Password-->
+              <label class="control-label" for="password">Password</label>
+              <div class="controls">
+                <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+                <p class="help-block">Password should be at least 4 characters</p>
+              </div>
+            </div>
+         
+            <div class="control-group">
+              <!-- Password Confirmation-->
+              <label class="control-label"  for="password_confirm">Password (Confirm)</label>
+              <div class="controls">
+                <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="input-xlarge">
+                <p class="help-block">Please confirm password</p>
+              </div>
+            </div>
+         
+            <div class="control-group">
+              <!-- Button -->
+              <div class="controls">
+                <button class="btn btn-success">Register</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+</body>
+</html>
