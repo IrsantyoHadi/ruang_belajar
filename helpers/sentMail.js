@@ -5,18 +5,17 @@ const user = process.env.email
 const pass = process.env.pass
 
 var transporter = nodemailer.createTransport({
-  service: 'yahoo',
+  service: 'gmail',
   auth: {
-    user: `${user}`,
-    pass: `${pass}`
+    user: `ruangbelajarhacktiv@gmail.com`,
+    pass: `hacktiv8`
   }
 });
 
 let sendNotification = (data) => {
     return new Promise ((resolve,reject)=>{
-        console.log(data)
         let mailOptions = {
-            from: `${user}`,
+            from: 'ruangbelajarhacktiv@gmail.com',
             to: data.dataValues.email,
             subject: 'Welcome to Ruang Belajar!!!',
             text: `Silahkan verifikasi menggunakan link dibawah ini:
