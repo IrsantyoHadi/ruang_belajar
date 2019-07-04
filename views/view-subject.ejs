@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("../partials/header.ejs")%>
+
+<body>
+
+    <div class="container">
+        <canvas id="myChart"></canvas>
+    </div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    // ==============ambil data dari controller===============
+    // var labels = JSON.parse(`<%- JSON.stringify(labels) %>`);
+    // var data = JSON.parse(`<%- JSON.stringify(data) %>`);
+
+    var labels = ['yadi', 'husain', 'joko']
+    var data = [10, 90, 30]
+
+    function renderChart(data, labels) {
+        var ctx = document.getElementById("myChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Student Report',
+                    data: data,
+                }]
+            },
+        });
+    }
+
+    renderChart(data, labels);
+</script>
+
+</html>

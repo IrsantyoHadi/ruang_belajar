@@ -1,9 +1,9 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  class StudentSubject extends sequelize.Sequelize.Model{
-    static associate(models){
-      StudentSubject.hasMany(models.Student)
-      StudentSubject.hasMany(models.Subject)
+  class StudentSubject extends sequelize.Sequelize.Model {
+    static associate(models) {
+      StudentSubject.belongsTo(models.Student)
+      StudentSubject.belongsTo(models.Subject)
     }
   }
   StudentSubject.init({
@@ -11,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
     SubjectId: DataTypes.INTEGER,
     score: DataTypes.INTEGER,
     isPaid: DataTypes.BOOLEAN
-  },{sequelize})
+  }, {
+    sequelize
+  })
 
   return StudentSubject;
 };

@@ -9,11 +9,15 @@ const port = 3000
 
 app.use(session({
   secret: 'keyboard cat',
-  cookie: { maxAge: 60000 }
+  cookie: {
+    maxAge: 60000
+  }
 }));
 app.use(flash());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+  extended: true
+}));
 
 app.use('/', routerHome)
 app.use('/students', routerStudent)
