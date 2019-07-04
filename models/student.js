@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       type : DataTypes.STRING,
       allowNull:false,
       validate:{
-        notNull : {
+        notEmpty : {
           args : true,
           msg : `username tidak boleh kosong`
         }
@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
           args : true,
           msg : `format email salah`
         },
-        notNull : {
+        notEmpty : {
           args : true,
           msg : `username tidak boleh kosong`
         }
@@ -62,11 +62,11 @@ module.exports = (sequelize, DataTypes) => {
     isRegister: DataTypes.BOOLEAN
   },{ 
     hooks :{
-      afterCreate : (input) =>{
+      beforeSave : (input) =>{
         const bcrypt = require('bcryptjs');
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(input.password, salt)
-        return input.update({password : hash })
+        input.password = hash
       }
     },
     sequelize })

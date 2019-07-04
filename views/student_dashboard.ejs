@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("../partials/header.ejs")%>
+    <%- include("../partials/navbar.ejs")%>
+    <script>
+        function clickDelete(id) {
+          let r = confirm("Kamu yakin mau berenti sekolah???")
+          if(r){
+              window.location = `/students/delete/${id}` 
+          }
+        }
+    </script>
+<body>
+  <div class="container">
+    <h1>WELCOME <%=dataStudent.first_name%> !!</h1>
+    <h2>STUDENT PROFILE</h2>
+    <h3><%=msg%></h3>
+    <div class="span2">
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgOCAoIDggJCggIBwoIBwcHCA8ICQgKIBEWIhUdExMkHCgsJCYxJxMTITEhJSk3Li4uFx8zODMsNygtLisBCgoKDg0OGA8PFy0dFx0tLS0tLS0tKy0tLSstKy0tLS0tLSstKy0tLS0rLS0rNy0tLTcrNys3KystKy0rLS0rLf/AABEIAMgAyAMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAAAQIDBAUGB//EADwQAAIBAwIEAwUGBAUFAQAAAAECAAMEERIhBRMxQSIyUQZCUmFxFCNicoGRgpKhwRUzQ7HCNGOy0eEH/8QAGQEBAAMBAQAAAAAAAAAAAAAAAAECAwQF/8QAIREBAQACAwEAAgMBAAAAAAAAAAECEQMSITFBUSJhcQT/2gAMAwEAAhEDEQA/APh2YiICIiAiDEBERAREsOmf2gM4HzlYJiAiIgIiICIiAiJcDG/7LAgDG/8ASVJMEnrEBERAREQEREBERAREQERECQN4J7dpY7DHfvKQEGIgIiICIiAiJYDvAAbZlSTJJkQEREBERAREQEREBERAREQEuiknpknpKAftNm3XbPrt/DAvSojY4B+bf2mwKK46fzIsw1ayr4RufhX3ZrPVcknUR+EGEettrVD2wfVJp1aLL1GR6yA7/Ef3mVbg+VgCvc6fFB614mwyodsjB/y3X/lMDKQSO4hKIkSygdewgAO/aQTJZv0ErAmIiAiIgIiAIAREQEREBERAREkesAemP3mxTPhAxqZhpCzWm9w+mXqgY30YHykW6m6mY7ulBbnGSCWJbw4mVLFioYKxHw/FO/b8KeowpJj3eY3k/Vp6ax9ngpD6g9Smy8tM66dP/wC/OY5c0143x4N32vEHg9SnatXqLy6lRC9JH83L+nqe01qPDWNNXKnLCoxX4cdJ9Gv+FW7EvUdhVanzalasdbNjso7ATg1G4aMClctUqJT08pKLupaUnLlZ5F8uLGXVryV3ZvTYkDK9SO2kzScjY98YOZ6e7VKlMjSVdKeko40Np/LPNVxhyMYI2Pzm3HlbPXPyYzG+MMkmRE0UTERASJMiBMRG0AB3gmCZECYiICIiAiIgIMk+kiAnW4ETzmAANTl/d6vinK7z1Fjwiva3trzMZu7X7QiKOg2lc7JjdtOOW5TTt0uE2VMDm3l09ZqbVaiW76GKjdz8gPWdLgFC0DG4tnqHZm8dQ1OZTHm6zLQ4XrrNUDledQa3qoya+ZTPmE2ja0rS2FCnhQQyDUWqcvPm0se57zjue8fvrt6ay3JNNu9anVaihCNqoNV1N7qjtOJV4mlvUoWyWSK94Ndt5afMXU27N2zhpu11dDbvr0nH3b+nym4bO2qU/HTUMRqVsDT/AA+krLJ9WuFvyvM360rqgLhaXLrLq16hoYfEJ4G6R/tDrgkhjso1T6tc2KU6TIiBUYNPJezVtq45ceEMKdvUrMjDzaSpYTXhz1LWPNx+yft4yTOv7WJbjjF4KKhaHP8Au1XoNhn+uZx51y7krks1bCIiFSAIAg/0gMiIiAiJEBEmIFwmTI0GZNLjcqw/SRLaV3VNMjEyYkad5GiVTBkTJgRp+caqdxjnu7XiVK6ocOrN/wBValbJ193lhev67TxGmbFjcPSqqwJxzKbsPo0pyY9o048+tfabJAUGNiR7scTtkRULI9Qj70UkIRqjDtvtMPArhHpI+QcorTHxO/HMIYhQrspd/wDZZ50nunpdv47Z765pVqVGn9gdqZ0rX1VEptTX1+o9BOhwy2V7QN71M1EDMNDNTDeAt88Tz9zf0WoBAGVk6uo8X1m3wTirmotPUHDeHWn/ACXtL2fmolsrLxZNKkYyMT53w6+FDi93c6gKa2tbOr/UXT0Hzn0L2juEWi7k42afGb6pqrORnBqNNeDHe4w/6M7LNMVxVapVeqTlqrtUP1JmKInW4gCP94iAMREBERAREQESIgbCV3zjmOB9dc3RTrMoYcmoG6MyaWnLnR4S51GnnbGoQixLUW72p/NSeYCiazkVKa421pqadnG8sFB7Z2jdV243IQ+WvSP5zy2g2tXsmr8jh50L7kKhYorHyoMdTOM1Qk5UaB8KEye1TJtlajUHVGH5hKg436H8U3LFnfKC5dHA1aX8atNp7a6xki2qD8aaGjZp3fY/jhAFuxAqL4qWo/5i+k9XppXI5mgHdkOnzK0+Y0qTitTPINJjVVdaVNaj56Z6K04rcW1cbMPeqUm8a1G91l/9Tj5OOdty/XbxctmOrPI9XStrtiaWmmtEDRzH8zL6SRotiz6VQ40hvXE5ye0he3ZcaXan6aF1e8ZxeKcUepSRNRUIdRfPib5Slwytkra8uMx3PWT2l4q7Ud28VXyIpnhHzqJPXO89VQs61bNw6kU08moTzd7SZa7rggcxiNp0cWpuRy8va6taskCJdRtNmCkTJplSsnSNqxJIkYkJIiICDEQEREBNrhpxcL8wwmrMlB9NRX+A5gejxtCHcyqMpQOCCpXVqgHfMqpr1zeNtmoi+lPJnMm9fEPXZ85A8AH0mEADsBLLQtXKVVfGynf5idCvxNyQEAVR7zDWxmhJgdvgtvzjWfzVl5bhm82nV4p7W0sbevSCVEDYHm95Z864de1aFYVkIDL4SreWovvBp7XhHtVw04FYVLap38BqU/5hv/ScnNhlbuOzgzxk1k6h9krQ7q9RR8Otpnt/ZfhqYco1Rl96qWedax4pwp1DJxC0b1Xnimy/wmTe8S4aiFje2q/i+0o/95hbl/bokw+zThcRoJp0KgAHhCqNE8l7Q2dOlbFyBzKtVVpL/wCU73E/anhqZCO1xU7LST7v+czxfF+KVrmtzX0rpGilTTy01m3DhluWzUYc+eNx1LuuU9MZPb6SuhvqJlidjiYwO2QD+LwywovjIAb8pgjb1lSvcEg/WTtGkFDvkEY+UriSXfoWbHfeZ6R1H/Tc/jGho2nTXCjP6SNM3Ho/9nH4qT65hdEHvMv50g9a+ImVk6eJTk+6ZUo3oZBtQDfriJOIhKIiWA2gZqF1Vp7Bsr8DeWbBvKjJjAUHwnT700cb4mwq4AHpCKmQZMd4EQJJEAQJEkZ9ZAkjMCSfVAYyvwAfpJAkEQILdpBk4giBWTiMGBAjEgrLiMdYGCqu2fSYgx65xNsrsZqkEEiEt22r5AQ9c7TBduTUYZOkHAWYkfDKfQ6pV2yxPqcwjTPblCCpUE9QzTOaKY95fymatufvF+uJ0MeE/KBo1cA41En4WGqJjqnLk/OISpLDpKzJTXLBc4BOnVAmkAT9BM49JNSkFbG5ON8nVIhCAJYDeMQBvAnTGmSBtGIQrjeSFkgScQkxIIl4gUxGJbEiBQxtL6ZBTvArjYRjeC22O4kvAgzXrDfM2JgrjoYGHMSJMJSrEEHuDmdGnVQ0ySQNpzYgSd9/UxNlrC6Cq/JYK9PmIT3X1kxufsakvT8w6kZ3lRMlFd89hAzk5Jb1OqSDIMZ/SEJEuMdZTE3Lbht26hkt6rL8ehuX/NJkt+H+NYy9Ok7ZCo7lRrqaENTSvq2J0q/s7xamKb1LG4pU7jTyKr0X01Py+s95w6/4FwuwqUUtryowCteX1a0ZObU09NRGw9BIylk+er4Y7vvkfLxjGcgj8Jk4lFqa61app0rUqs4UdKeSTiZMQojEYk4k4gVxBEuF3grApI7ST1kQMZx6bw5gnf5ZkE7frCEzHVHhImT6SpEJamDGJkbTkyuRCVYmYoABuCT4tK9pBUSNrda3/t9eoKSMwP2ajyqbfDTic9HYHP8ADJleqqmD07zNRUgH1mzdKoSmNi4Gn+HTMIU5xgk/hl0S7Je3ovUrU6CjNStVWlT/ADFsCVKkdiP0m/7PoTxK2ABZhXU01X3qg8srllrG1fDHeUle74R7F21ArVqgXFYeZ3H3VNvwrPX2V1w2jTS2IY1D4ESlTaorfsMSKTXHLAZVViuoq3jmQWjkB9Z151jT92q/lUTgufa+16MwkmpNNviPDBVty32K4KhfC/IOKf5cdJ5T2vN0vslcI9F3QCmvOcGk1Pxr5h3nr1e7CGmOIXNNTT0nRVP954j/APQLfiv+FvRHEKtxSq1VSpb3DK1Urqz5v4ZrhlO09ZZ71Zp8ssh4D9ZsACa9kRuncHVNsKOs7HAriQBvLHGJAHzhCBJI2jEgwKMJUyznaUJhKlQ9fWQeggjfeWP9YASDJwZBga9YeL9JjEy1x0MwwlmXoJOJNNHK6tBI+JYII6gj8wlWss0xvEz21HmVhT1aQx3b0iTtS/V6hDVuoJ0KPCdazoUKShem0RKZr8c9Vq0QxC9Mnyzf4TbpRuqdVRpNOorK+PFETLLK6a4Yzs+sWVwXoiq4Zg42ZZjveHfacL/iF9b0gPvEtKy0+Z+ZsZ/aRE5fl8df2NjhHDKNrTZKb1TzdXMe7dbmp9ct0M837acOrfZnrHiFwo5iqV20in72FA2iJpMr2jK4zrXyu1ADMowwB2f1myM43iJ3vOQT2kgbCIhBmQehiISow2mMxECoO/0gE5iIREE9s5/FERCVKq5H06aZr4iIS3uHOclPXxCblVU0sSAQvxREI/Ln0wwYupZR08B8QiIlV3//2Q==">
+    </div>
+    <div class="row">
+    <div class="span3">
+      <blockquote>
+        <h3><%=dataStudent.first_name%> <%=dataStudent.last_name%></h3>
+      </blockquote>
+      <h4>
+        Email : <%=dataStudent.email%> <br>
+        Age   : <%=dataStudent.age%>
+        <br><br>
+        <form action="/students/reportCard/<%=dataStudent.id%>" method="get">
+          <input type="submit" class="btn btn-warning" value="Get Report">
+        </form><br>
+        <form action="/students/edit_profile/<%=dataStudent.id%>" method="get">
+          <input type="submit" class="btn btn-primary" value="Edit Profile">
+        </form>
+        <br>
+        <button type="submit" class="btn btn-danger" onclick="clickDelete(<%=dataStudent.id%>)">Keluar Sekolah</button>
+      </h4>
+    </div>
+  </div>
+</div>
+</body>
+</html>

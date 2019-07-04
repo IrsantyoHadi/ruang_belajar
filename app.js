@@ -9,7 +9,7 @@ const port = 3000
 
 app.use(session({
   secret: 'keyboard cat',
-  cookie: { maxAge: 60000 }
+  cookie: { maxAge: 60000000000 }
 }));
 app.use(flash());
 app.use(express.json());

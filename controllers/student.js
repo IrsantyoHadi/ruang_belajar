@@ -10,10 +10,10 @@ class StudentController {
       let inputNewStudent ={
         first_name : (req.body.first_name == '' ? null:req.body.first_name),
         last_name : (req.body.last_name == '' ? null:req.body.last_name),
-        username : (req.body.username == '' ?null:req.body.username),
-        email : (req.body.email == ''?null:req.body.email),
+        username : req.body.username,
+        email : req.body.email,
         age : +req.body.age,
-        password: (req.body.password=''?null:req.body.password),
+        password: req.body.password,
         isRegister : false
       }
       Model.Student.create(inputNewStudent)
@@ -27,6 +27,7 @@ class StudentController {
       })
     }
   }
+
   static postLogin(req,res){
     Model.Student.findOne({
       where : {
@@ -35,17 +36,104 @@ class StudentController {
     })
     .then(dataStudent=>{
       if(dataStudent){
-        if(bcrypt.compareSync(req.body.password,dataStudent.password)){
-          res.send(dataStudent)
+        if(req.body.password == req.body.password_confirm){
+          if(bcrypt.compareSync(req.body.password,dataStudent.password)){
+            if(dataStudent.isRegister){
+              req.session.Student = {
+                id : dataStudent.id,
+                username : req.body.username
+              }
+              // console.log(req.session.Student)
+              res.redirect(`/students/dashboard/${dataStudent.id}`)
+            }else{
+              throw new Error(`Silahkan registrasi email terlebih dahulu`)
+            }
+          }else{
+            throw new Error(`Password Salah`)
+          }
         }else{
-        req.flash('login','Password Salah')
-        res.redirect('/login')
+          throw new Error(`Password yang anda masukkan berbeda`)  
         }
       }else{
-        req.flash('login','Data Username Tidak Ditemukan')
-        res.redirect('/login')
+        throw new Error(`Data Username Tidak Ditemukan`)
       }
     })
+    .catch(err=>{
+      req.flash('login',`${err.message}`)
+      res.redirect('/login')
+    })
+  }
+
+  static logout(req,res){
+    req.session.destroy()
+    res.redirect('/')
+  }
+
+  static delete(req,res){
+    Model.Student.destroy({
+      where : {
+        id : req.params.studentId
+      }
+    })
+    .then(()=>{
+      req.flash('msg','Selamat Jalan Sampai Jumpa Lagi')
+      res.redirect('/')
+    })
+  }
+
+  static getDashBoard(req,res){
+    Model.Student.findByPk(req.params.studentId)
+    .then(dataStudent=>{
+      res.render('student_dashboard.ejs',{
+        title : ` Hi ${dataStudent.first_name}!!`,
+        dataStudent,
+        msg : req.flash('dashboard')
+      })
+    })
+    .catch(err=>{
+      res.send(err)
+    })
+  }
+
+  static getEdit(req,res){
+    Model.Student.findByPk(req.params.studentId)
+    .then(dataStudent=>{
+      res.render('edit_student.ejs',{
+        title : 'Edit Profile',
+        dataStudent,
+        msg : req.flash('edit')
+      })
+    })
+    .catch(err=>{
+      res.send(err)
+    })
+  }
+
+  static postEdit(req,res){
+    // res.send(req.body)
+    if(req.body.password == req.body.password_confirm){
+      Model.Student.findByPk(req.params.studentId)
+      .then(dataStudent=>{
+       return dataStudent.update(
+          {
+            username :req.body.username,
+            email : req.body.email,
+            password : req.body.password
+          }
+          )
+      })
+      .then(()=>{
+        req.flash('dashboard',`berhasil edit profile`)
+        res.redirect(`/students/dashboard/${req.params.studentId}`)
+      })
+      .catch(err=>{
+        req.flash('edit',`${err}`)
+        res.redirect(`/students/edit_profile/${req.params.studentId}`)
+      })
+    }else{
+      req.flash('edit','salah konfirmasi password')
+      res.redirect(`/students/edit_profile/${req.params.studentId}`)
+    }
   }
 }
 
