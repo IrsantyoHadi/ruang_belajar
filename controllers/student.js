@@ -142,7 +142,6 @@ class StudentController {
       order : [['id','ASC']]
     })
     .then(dataStudents=>{
-      // res.send(dataStudents)
       res.render('all_students.ejs',{
         title: 'Students',
         dataStudents

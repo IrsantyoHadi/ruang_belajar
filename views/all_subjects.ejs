@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("../partials/header.ejs")%>
+<%- include("../partials/navbar.ejs")%>
+<body>
+
+
+    <section>
+
+        <div class="container">
+            <article id="main-col">
+                <h1 class="page-title">Subject</h1>
+                <h2><%=msg%></h2>
+                <%for (let subject of subjects) {%>
+                <ul id="services">
+                    <li>
+                        <h3><a
+                                href="/subjects/<%= subject.dataValues.id %>/<%=StudentId%>"><%= subject.dataValues.name %></a>
+                        </h3>
+                        <p> <%=subject.dataValues.description%>
+                        </p>
+                        <h3>Tingkat kesulitan : <%= subject.dataValues.diffilcutyLevel %></h3>
+                        <h4><a href="/subjects/<%= subject.dataValues.id %>/<%= StudentId%>/quiz">Get Quiz</a>
+                        </h4>
+                    </li>
+                </ul>
+                <%}%>
+        </article>
+    </div>
+
+    </section>
+
+
+</body>
+
+</html>
