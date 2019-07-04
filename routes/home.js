@@ -3,11 +3,7 @@ const Router = express.Router()
 const Home = require('../controllers/home')
 
 Router.get("/",Home.getRegister)
-Router.get('/test',(req,res)=>{
-res.render('test.ejs',{
-  title : 'ASIIIIk'
-})
-})
+Router.get("/login",Home.getLogin)
 
 module.exports = Router
 

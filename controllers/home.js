@@ -9,6 +9,13 @@ class HomeController {
     })
   }
 
+  static getLogin(req,res){
+    res.render('home_login.ejs',{
+      title : "Login",
+      msg : req.flash('login')
+    })
+  }
+  
 }
 
 module.exports = HomeController

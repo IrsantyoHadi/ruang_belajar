@@ -2,8 +2,8 @@
 module.exports = (sequelize, DataTypes) => {
   class StudentSubject extends sequelize.Sequelize.Model{
     static associate(models){
-      StudentSubject.hasMany(models.Student)
-      StudentSubject.hasMany(models.Subject)
+      StudentSubject.belongsTo(models.Student)
+      StudentSubject.belongsTo(models.Subject)
     }
   }
   StudentSubject.init({
