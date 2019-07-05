@@ -11,7 +11,7 @@
         <div class="container">
             <article id="main-col">
                 <h1 class="page-title">Subject</h1>
-                <h2><%=msg%></h2>
+                <center><h2 style="color: maroon"><%=msg%></h2></center> 
                 <%for (let subject of subjects) {%>
                 <ul id="services">
                     <li>
@@ -28,7 +28,7 @@
                 <%}%>
         </article>
     </div>
-
+    <a href="/students/dashboard/<%=id%>">back to dashboard</a>
     </section>
 
 

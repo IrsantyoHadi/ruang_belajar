@@ -8,7 +8,8 @@ class SubjectController {
                     subjects,
                     StudentId: req.session.Student.id,
                     title: 'Halaman Subjects',
-                    msg : req.flash('msgAll')
+                    msg : req.flash('msgAll'),
+                    id : req.session.Student.id
                 })
             })
             .catch(err => {
@@ -93,6 +94,7 @@ class SubjectController {
               subject.update({
                     score: nilai * 10
                 })
+                req.flash('msgAll',`selamat nilai kamu ${nilai * 10}`)
                 res.redirect('/subjects')
             })
             .catch(err => {

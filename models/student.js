@@ -5,6 +5,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models){
       Student.belongsToMany(models.Subject,{through : models.StudentSubject})
     }
+
+    getFullName(){
+      return this.first_name + ' ' + this.last_name
+    }
   }
   Student.init({
     first_name: DataTypes.STRING,

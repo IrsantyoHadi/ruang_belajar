@@ -144,11 +144,33 @@ class StudentController {
     .then(dataStudents=>{
       res.render('all_students.ejs',{
         title: 'Students',
-        dataStudents
+        dataStudents,
+        id:req.session.Student.id
       })
     })
     .catch(err=>{
       res.send(err)
+    })
+  }
+
+  static reportCard(req,res){
+    Model.StudentSubject.findAll({
+      where :{
+        StudentId : req.params.studentId
+      },
+      include : [Model.Student,Model.Subject]
+    })
+    .then(data=>{
+      // res.send(data)
+      res.render('student_reportcard.ejs',{
+        data,
+        title : data[0].Student.first_name,
+        id : req.session.Student.id
+      })
+    })
+    .catch(err=>{
+      req.flash('login','silahkan login terlebih dahulu')
+      res.redirect('/login')
     })
   }
 }

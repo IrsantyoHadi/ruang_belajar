@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("../partials/header.ejs")%>
+    <%- include("../partials/navbar.ejs")%>
+<body>
+  <h1>Student Name :<%=data[0].Student.getFullName()%></h1>
+  <h2>Age : <%=data[0].Student.age%></h2>
+
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%data.forEach(el=>{%>
+          <tr>
+            <td><%=el.Subject.name%></td>
+            <td><%=el.score%></td>
+          </tr>
+        <%})%>
+      </tbody>
+    </table>
+  </div>
+  <a href="/students/dashboard/<%=id%>">back to dashboard</a>
+</body>
+</html>
